@@ -31,11 +31,22 @@ The Wired Equivalent Privacy
 .B "WEP" ) (
 algorithm was introduced into the 802.11 wireless standard in 1997 and was purvasive until 802.11g in 2003 which introduced WPA.
 As the name suggets it was intdended to provide packet level encryption for data being transmitted over the network.
-The algorithm uses either a 40 bit or 104 bit secret key to produce either a 64 or 128 bit keystream using RC4.
+The algorithm uses either a 40 bit or 104 bit secret key to produce either a 64 or 128 bit key used for the RC4 stream cipher.
 .SH 2
 Issues
 .PP
-
+A number of issues became clear with the WEP algorithm during its lifespan.
+The first issue was with the stream cipher,
+.B "RC4" .
+First devised in 1987 it used in a number of protocols such as
+.B "WPA" ,
+.B "SSL"
+and
+.b "TLS" .
+The algorithm was, and still is, proprietary practicing security through obscurity as after the source code was posted in 1994.
+From then a number of issues were discovered such as Weak Keys in the Stream Cipher
+\#.[weak Keys.]
+which the the initial byte of the psuedo random stream was correlated with only a few bytes of the key, reducing work for an informed brute force.
 
 
 .NH
