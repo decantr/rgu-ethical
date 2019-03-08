@@ -57,7 +57,12 @@ By capturing large numbers of packets analysing them the key could be discovered
 \#.[ weakness in key scheduling .[
 .pp
 The second major issue with WEP is the size of the Initialisation Vector (IV).
-As WEP uses a Stream Cipher and not a Block Cipher it is imperative that the traffic key must not be reused.
+As WEP uses a Stream Cipher and not a Block Cipher it is imperative that the traffic key not be reused.
+However with a 24 bit IV the possible permutations are only 2^24 or 16,777,216 significantly increasing the likelyhood of key repetition to %50 after only 300,000 packets.
+Further, with an agressive method of replaying Adress Resolution Protocol
+.B "ARP" ) (
+requests a sufficient number of packets to retrieve the secret key can be obtained in under a minute.
+\#.[ breaking 104 bit WEP ].
 
 
 .NH
