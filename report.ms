@@ -6,7 +6,8 @@ Shaw Eastwood
 Robert Gordon University
 .DA
 .AB
-A discussion of the issues inherent in the WEP protocol and the RC4 cipher stream it uses. A discussion of potential countermeasures for a network that must reploy a WEP network and the implemenation of a IDS system. Finally a discussion of the ethics of the field.
+A discussion of the issues inherent in the WEP protocol and the RC4 cipher stream it uses.
+A discussion of potential countermeasures for a network that must deploy a WEP network and the implemenation of a IDS system. Finally a discussion of the ethics of the field.
 .AE
 .SH
 Introduction
@@ -32,9 +33,18 @@ Wired Equivalent Privacy
 \# TODO : Explain flaws with the IV
 \# TODO : Demonstration walkthrough of the process
 .PP
-The WEP algorithm was introduced into the 802.11 wireless standard in 1997 and was purvasive until 802.11g in 2003 which introduced WPA.
-As the name suggets it was intdended to provide packet level encryption for data being transmitted over the network.
-The algorithm uses either a 40 bit or 104 bit secret key to produce either a 64 or 128 bit key used for the RC4 stream cipher.
+The WEP algorithm was introduced with the IEEE 802.11 wireless standard in 1997 which was an extension to the 802 Local Area Network
+.B "LAN" ) (
+protocols to add Wireless functionality
+.B "WLAN" ). (
+As the name suggets it was intended to provide a similar level of confidentiality to the wireless network as was already present on existing LAN's.
+The protocol implements this by providing packet level encryption for data being transmitted over the network.
+The algorithm creates either a 64 or 128 bit key comprising of a 24 bit Initialisation Vector
+.B "IV" ) (
+and either a 40 or 104 bit Pre Shared Key.
+This restiction allowed for either 5 or 13 ASCii character passwords respectively (or 10 or 26 hexadecimal strings).
+WEP was purvasive until major security flaws were discovered and the 802.11i revision was issued which introduced Wi-Fi Protected Access
+.B "WPA" ). (
 However a number of issues became clear with the WEP algorithm during its lifespan.
 .SH 2
 Issues
@@ -46,7 +56,7 @@ First devised in 1987 it used in a number of protocols such as
 .B "SSL"
 and
 .B "TLS" .
-The algorithm was, and still is, proprietary practicing security through obscurity althought the source code was posted in 1994.
+The algorithm was, and still is, proprietary practicing security through obscurity although the source code was posted in 1994.
 The algorithm is remarkable for its simplicity, being only 76 lines of code, and for its speed, requiring only 19 instructions for each random value.
 From then a number of issues were discovered such as Weak Keys in the Stream Cipher
 \#.[weak keys.]
