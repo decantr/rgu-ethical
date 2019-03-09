@@ -46,14 +46,12 @@ This restriction allowed for either 5 or 13 ASCII character passwords respective
 WEP was pervasive until major security flaws were discovered and the 802.11i revision was issued which introduced Wi-Fi Protected Access
 .B "WPA" ). (
 However a number of issues became clear with the WEP algorithm during its lifespan.
-
-.SH 2
-Issues
+\#.SH 2 "Issues"
 .SH 3
 Rivest Cipher 4 (RC4)
 .PP
 The first issue described is actually an issue with the stream cipher used Rivest Cipher 4
-.B "RC4" .
+.B "RC4" ). (
 The stream cipher was first devised in 1987 it was used in a number of prodiminant protocols up until 2015 such as
 .B "WPA"
 (version 1),
@@ -66,20 +64,38 @@ Though despite creating an identical output it was never confirmed to be the act
 The algorithm is remarkable for its simplicity, being only 76 lines of code, and for its speed, requiring only 19 instructions for each random value.
 The algorithm takes an input of an IV and a Key, the algorithm then repeats the key until it has a 256 byte key.
 This key is then "permutated" by iterating through the key and swapping the bytes indices and then used to generate a keystream.
+.SH 3
+RC4 Issues
+.PP
 One minor flaw that exists with this lies in the first 256 bytes of the resulting RC4 keystream being disproportionally non random, thus in most implementations of RC4 the first ~256 bytes are discarded.
 This is
 .B "not"
 the case in WEP and thus the initial output of the stream is susceptible.
 \#.[ Andrew Roos .]
+.PP
 A second flaw that reveals that the relationship between the first 8 bytes of the key, if chosen correctly, can inform on the remaining half of the key.
 This flaw is not an issue in the SSL implementation of RC4 as SSL uses MD5 to hash the key before it used.
 \#.[ David Wagner .]
-
-\#.[weak keys.]
-which the initial byte of the pseudorandom stream was correlated with only a few bytes of the key, reducing work for an informed brute force.
-RC4 persisted to be a dominant algorithm despite its flaws until in 2001 it was discovered that the initial bytes of the key stream were not random and thus revealing information about the secret key.
-By capturing large numbers of packets analysing them the key could be discovered.
-\#.[ weakness in key scheduling .[
+.SH 2
+WEP Issues
+.PP
+These issues in RC4 can be avoided as described, discarding the initial ~256 byte output and hashing the key before using it however WEP implements neither of these.
+Infact WEP's implementation makes the situation worse by regenerating the keystream, with a fresh IV, for each packet, meaning that it is very easy to capture a wide variety of IV's.
+Further the 802.11 protocol has a number of static plaintext elements that it embeds into the packet header.
+These known bytes allow the attacker to make informed assumptions about the ciphertext packets being examined.
+.PP
+In 2001 it was discovered in the Fluhrer, Mantin & Shamir
+.B "FMS" ) (
+attack that certain IV's had a predictable resulting output.
+Since the IV used is known, as it is transmitted in plaintext with the ciphertext, a wide range of IV's can be quickly obtained.
+An attacker can then use a voting system to guess at the a next byte of the key, repeatedly, until the entire secret key has been revealed.
+\#.[ Weakness in Key Scheduling Algorithm .]
+.QP
+.RS
+.I
+It is worth mentioning that the FMS attack is a vulnerability in RC4. However it is due to the nature of the WEP implementation of RC4 that makes it viable.
+.RE
+.R
 .PP
 The second major issue with WEP is the size of the Initialisation Vector
 .B "IV" ). (
