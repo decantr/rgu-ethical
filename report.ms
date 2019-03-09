@@ -49,10 +49,12 @@ However a number of issues became clear with the WEP algorithm during its lifesp
 
 .SH 2
 Issues
+.SH 3
+Rivest Cipher 4 (RC4)
 .PP
-The first issue described is actually an issue with the stream cipher used
+The first issue described is actually an issue with the stream cipher used Rivest Cipher 4
 .B "RC4" .
-First devised in 1987 it was used in a number of prodiminant protocols  up until 2015 such as
+The stream cipher was first devised in 1987 it was used in a number of prodiminant protocols up until 2015 such as
 .B "WPA"
 (version 1),
 .B "SSL"
@@ -66,12 +68,12 @@ The algorithm takes an input of an IV and a Key, the algorithm then repeats the 
 This key is then "permutated" by iterating through the key and swapping the bytes indices and then used to generate a keystream.
 One minor flaw that exists with this lies in the first 256 bytes of the resulting RC4 keystream being disproportionally non random, thus in most implementations of RC4 the first ~256 bytes are discarded.
 This is
-.B not
+.B "not"
 the case in WEP and thus the initial output of the stream is susceptible.
-
-From its introduction into WEP a number of issues were discovered.
-The creation of the RC4 stream cipher has a flaw meaning that on average 1 in every 256
-
+\#.[ Andrew Roos .]
+A second flaw that reveals that the relationship between the first 8 bytes of the key, if chosen correctly, can inform on the remaining half of the key.
+This flaw is not an issue in the SSL implementation of RC4 as SSL uses MD5 to hash the key before it used.
+\#.[ David Wagner .]
 
 \#.[weak keys.]
 which the initial byte of the pseudorandom stream was correlated with only a few bytes of the key, reducing work for an informed brute force.
