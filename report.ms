@@ -46,19 +46,33 @@ This restriction allowed for either 5 or 13 ASCII character passwords respective
 WEP was pervasive until major security flaws were discovered and the 802.11i revision was issued which introduced Wi-Fi Protected Access
 .B "WPA" ). (
 However a number of issues became clear with the WEP algorithm during its lifespan.
+
 .SH 2
 Issues
 .PP
-The first issue was with the stream cipher,
+The first issue described is actually an issue with the stream cipher used
 .B "RC4" .
-First devised in 1987 it used in a number of protocols such as
-.B "WPA" ,
+First devised in 1987 it was used in a number of prodiminant protocols  up until 2015 such as
+.B "WPA"
+(version 1),
 .B "SSL"
 and
 .B "TLS" .
-The algorithm was, and still is, proprietary practicing security through obscurity although the source code was posted in 1994.
+The algorithm was, and still is, a proprietary algorithm practicing "security through obscurity" however an anonymous user posted the source code in 1994 to a usenet.
+Though despite creating an identical output it was never confirmed to be the actual source code and is thus reffered to as "Alleged RC4"
+.B "ARC4" .
 The algorithm is remarkable for its simplicity, being only 76 lines of code, and for its speed, requiring only 19 instructions for each random value.
-From then a number of issues were discovered such as Weak Keys in the Stream Cipher
+The algorithm takes an input of an IV and a Key, the algorithm then repeats the key until it has a 256 byte key.
+This key is then "permutated" by iterating through the key and swapping the bytes indices and then used to generate a keystream.
+One minor flaw that exists with this lies in the first 256 bytes of the resulting RC4 keystream being disproportionally non random, thus in most implementations of RC4 the first ~256 bytes are discarded.
+This is
+.B not
+the case in WEP and thus the initial output of the stream is susceptible.
+
+From its introduction into WEP a number of issues were discovered.
+The creation of the RC4 stream cipher has a flaw meaning that on average 1 in every 256
+
+
 \#.[weak keys.]
 which the initial byte of the pseudorandom stream was correlated with only a few bytes of the key, reducing work for an informed brute force.
 RC4 persisted to be a dominant algorithm despite its flaws until in 2001 it was discovered that the initial bytes of the key stream were not random and thus revealing information about the secret key.
