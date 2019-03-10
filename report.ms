@@ -107,10 +107,16 @@ Further, with an aggressive method of replaying Address Resolution Protocol
 .B "ARP" ) (
 requests a sufficient number of packets to retrieve the secret key can be obtained in under a minute.
 \#.[ breaking 104 bit WEP ].
-
-
+.SH 2
+General WEP Issues
+.PP
+Of the issues described above, the largest issue with 802.11 (WLAN) is the fact its wireless.
+Packets sent across the network can be picked up by anyone sitting within range of the Access Point
+.B "AP" ) (
+which is a major disadvantage over the wired 802 (LAN) which requires physical access.
 .NH
 Countermeasures
+.PP
 
 
 .NH
