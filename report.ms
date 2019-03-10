@@ -30,9 +30,8 @@ Included will be the ethical framework and standards that ethical hackers operat
 Wired Equivalent Privacy
 \# TODO : WEP Encryption diagram
 \# TODO : Demonstration walk through of the process
-\# TODO : Once keystream has been captured and we have the IV just bruteforce the Sectret keys
-\# TODO : Static session keys
 \# TODO : Mention WPA
+\# TODO : Mention WPA's stalting of key with SSID
 .PP
 The WEP algorithm was introduced with the IEEE 802.11 wireless standard in 1997 which was an extension to the 802 Local Area Network
 .B "LAN" ) (
@@ -123,6 +122,10 @@ This was discovered to be unnecessary in as an attack success rate of 50% can be
 The 802.11g standard introduced the 54 MBit/s (22 Mbit average maximum throughput) specification, a major step up in bandwidth and reducing the time to retrieve all possible IV's within an hour.
 This even further reduced the time taken in the average aggressive attack to less than a minute.
 \#.[ Breaking WEP in less than 60 seconds .]
+.PP
+Further, the use of the static PSK for encrypting the traffic means that an attacker can capture a large amount of traffic quickly and then disconnect from the network and break the encryption offline.
+This is less of an issue as the previous one as the time taken to break WEP is so small.
+
 .NH
 Countermeasures
 .PP
