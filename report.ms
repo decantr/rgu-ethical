@@ -30,7 +30,6 @@ Included will be the ethical framework and standards that ethical hackers operat
 Wired Equivalent Privacy
 \# TODO : WEP Encryption diagram
 \# TODO : Demonstration walk through of the process
-\# TODO : Talk about time to iterate through all possible IV's
 \# TODO : Once keystream has been captured and we have the IV just bruteforce the Sectret keys
 \# TODO : Static session keys
 \# TODO : Mention WPA
@@ -54,7 +53,7 @@ Rivest Cipher 4 (RC4)
 .PP
 The first issue described is actually an issue with the stream cipher used Rivest Cipher 4
 .B "RC4" ). (
-The stream cipher was first devised in 1987 it was used in a number of prodiminant protocols up until 2015 such as
+The stream cipher was first devised in 1987 it was used in a number of predominantly protocols up until 2015 such as
 .B "WPA"
 (version 1),
 .B "SSL"
@@ -82,7 +81,7 @@ This flaw is not an issue in the SSL implementation of RC4 as SSL uses MD5 to ha
 WEP Issues
 .PP
 These issues in RC4 can be avoided as described, discarding the initial ~256 byte output and hashing the key before using it however WEP implements neither of these.
-Infact WEP's implementation makes the situation worse by regenerating the keystream, with a fresh IV, for each packet, meaning that it is very easy to capture a wide variety of IV's.
+In fact WEP's implementation makes the situation worse by regenerating the keystream, with a fresh IV, for each packet, meaning that it is very easy to capture a wide variety of IV's.
 Further the 802.11 protocol has a number of static plaintext elements that it embeds into the packet header.
 These known bytes allow the attacker to make informed assumptions about the ciphertext packets being examined.
 .PP
@@ -116,6 +115,14 @@ Of the issues described above, the largest issue with 802.11 (WLAN) is the fact 
 Packets sent across the network can be picked up by anyone sitting within range of the Access Point
 .B "AP" ) (
 which is a major disadvantage over the wired 802 (LAN) which requires physical access.
+.PP
+An attacker wishing to do an aggressive attack on an 802.11b AP, 11 Mbit/s throughput, assuming the standard Maximum Transmission Unit
+.B "MTU" ) (
+and a consistent network connection would be able to capture the full range of possible IV's in 5 hours.
+This was discovered to be unnecessary in as an attack success rate of 50% can be achieved after capturing only 40,000 packets (increasing to 95% at 85,000 packets).
+The 802.11g standard introduced the 54 MBit/s (22 Mbit average maximum throughput) specification, a major step up in bandwidth and reducing the time to retrieve all possible IV's within an hour.
+This even further reduced the time taken in the average aggressive attack to less than a minute.
+\#.[ Breaking WEP in less than 60 seconds .]
 .NH
 Countermeasures
 .PP
