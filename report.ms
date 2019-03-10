@@ -28,10 +28,12 @@ Included will be the ethical framework and standards that ethical hackers operat
 
 .NH
 Wired Equivalent Privacy
-\# TODO : Problems with RC4
 \# TODO : WEP Encryption diagram
-\# TODO : Explain flaws with the IV
 \# TODO : Demonstration walk through of the process
+\# TODO : Talk about time to iterate through all possible IV's
+\# TODO : Once keystream has been captured and we have the IV just bruteforce the Sectret keys
+\# TODO : Static session keys
+\# TODO : Mention WPA
 .PP
 The WEP algorithm was introduced with the IEEE 802.11 wireless standard in 1997 which was an extension to the 802 Local Area Network
 .B "LAN" ) (
@@ -123,6 +125,8 @@ A VPN will encrypt all of the traffic travelling through the tunnel itself meani
 This means that if (or when) the WEP security is broken, the data will still be unreadable by an attacker.
 .SH 2
 VPN
+.PP
+
 
 .NH
 Ethical
