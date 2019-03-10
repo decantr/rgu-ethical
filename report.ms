@@ -117,7 +117,12 @@ which is a major disadvantage over the wired 802 (LAN) which requires physical a
 .NH
 Countermeasures
 .PP
-
+A number of countermeasures can be used to combat the impotence of WEP.
+The primary tool we are going to use is a VPN.
+A VPN will encrypt all of the traffic travelling through the tunnel itself meaning that we are no longer handing WEP a plaintext message but instead ciphertext from our VPN implementation of choice.
+This means that if (or when) the WEP security is broken, the data will still be unreadable by an attacker.
+.SH 2
+VPN
 
 .NH
 Ethical
