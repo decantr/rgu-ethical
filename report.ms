@@ -125,17 +125,18 @@ This even further reduced the time taken in the average aggressive attack to les
 .PP
 Further, the use of the static PSK for encrypting the traffic means that an attacker can capture a large amount of traffic quickly and then disconnect from the network and break the encryption offline.
 This is less of an issue as the previous one as the time taken to break WEP is so small.
-
 .NH
 Countermeasures
 .PP
 A number of countermeasures can be used to combat the impotence of WEP.
-The primary tool we are going to use is a VPN.
+The primary tool we are going to use for this is a VPN.
 A VPN will encrypt all of the traffic travelling through the tunnel itself meaning that we are no longer handing WEP a plaintext message but instead ciphertext from our VPN implementation of choice.
 This means that if (or when) the WEP security is broken, the data will still be unreadable by an attacker.
 .SH 2
-VPN
+Wireguard VPN
 .PP
+Wireguard is a recent VPN implementation written by Jason A. Donenfeld, known for password store and cgit, and is on track for merging into the linux kernel tree.
+WG is a Layer 3 implementation licenced with GPL and written in C with only ~4000 lines of code it is perfectly suited for low powered devices that would struggle with a more heavy OpenVPN or Swansong implementation.
 
 
 .NH
