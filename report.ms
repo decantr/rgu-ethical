@@ -213,12 +213,12 @@ If we wanted to have multiple instances or had a firewall with only a specific p
 Finally our adminstrator password is up to the discretion of the network administrator setting this up, however it would be good practice to ensure this was a strong password.
 \# ethical-s-createcert.png
 .PP
-Next we we need to create the certificate for our server which users can use to ensure that our server is who it says it is.
+Next we we need to create the certificate for our client which our server can use to ensure that our client is who they say they are.
 In production we would likely see this certificate entered into a Certificate Authority
 .B "CA" ) (
 which is a central,
 .B "trusted" ,
-authority which users can request the certificate from to check against the server it's connecting to.
+authority which would allow the network administrator to easily handle and manage many certificates easily without the need to manually create a new one for each user.
 However again, for demonstration purposes this is unnesecary and we will just issue a Self-Signed Certificate and distribute this to the clients manually.
 .TS
 center tab(:);
@@ -234,7 +234,8 @@ Locale (L):Aberdeen
 Seriel Number (Hex): N/A
 Expires:3650 Days
 .TE
-
+.PP
+Creating this certificate will give us the file with which we can authenticate the client connectiing to the server with.
 
 
 .SH 2
