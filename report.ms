@@ -188,6 +188,8 @@ Installation of SoftEther
 \# ethical-s-choice.png
 .PP
 During the installation it is important to choose the avaiable "SoftEther VPN Server" and "SoftEther VPN Client" options during the server and client installation respectively.
+.SH 3
+Server Setup
 \# ethical-s-remoteaccess.png
 .PP
 SoftEther allows a number of configurations on the VPN Server.
@@ -236,7 +238,17 @@ Expires:3650 Days
 .TE
 .PP
 Creating this certificate will give us the file with which we can authenticate the client connectiing to the server with.
-
+With this proccess hooked up to an Lightweight Directory Access Protocol
+.B "LDAP" ) (
+or Active Directory
+.B "AD" ) (
+server, the certificates could be tied to those user profiles and would be generated and expired as the LDAP/AD accounts were.
+\# ethical-s-vpnsetup
+.PP
+Once we have completed this our VPN can be started and we will be looking at the an information screen with various options and information regarding users connected.
+From here we will need to move to the client and connect them to the server.
+.SH 3
+Client Setup
 
 .SH 2
 Intrusion Detection System
