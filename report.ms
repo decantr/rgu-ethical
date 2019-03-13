@@ -21,7 +21,7 @@ The second section will contain my proposal and test implementation of a solutio
 a firewall and a Virtual Private Network
 .B "VPN" ) (
 implementation such as WireGuard
-.B "WG" ) (
+.B "SE" ) (
 to protect the network and the data.
 Finally the last section will be a discussion of the ethics of white hat hacking and penetration testing.
 Included will be the ethical framework and standards that ethical hackers operate on.
@@ -32,13 +32,19 @@ Wired Equivalent Privacy
 \# TODO : Demonstration walk through of the process
 \# TODO : Mention WPA
 \# TODO : Mention WPA's stalting of key with SSID
+\# TODO : WEP Authentication
+\# TODO : Issues with CRC-32
 .PP
 The WEP algorithm was introduced with the IEEE 802.11 wireless standard in 1997 which was an extension to the 802 Local Area Network
 .B "LAN" ) (
 protocols to add Wireless functionality
 .B "WLAN" ). (
 As the name suggests it was intended to provide a similar level of confidentiality to the wireless network as was already present on existing LAN's.
-The protocol implements this by providing packet level encryption for data being transmitted over the network.
+The protocol implements this by providing packet level encryption for data being transmitted over the network provided by Rivest Cipher 4
+.B "RC4" ) (
+and the Cyclic Redundancy Check 32
+.B "CRC-32" ) (
+to ensure packet integrity.
 The algorithm creates either a 64 or 128 bit key comprising of a 24 bit Initialisation Vector
 .B "IV" ) (
 and either a 40 or 104 bit Pre Shared Key.
@@ -133,11 +139,15 @@ The primary tool we are going to use for this is a VPN.
 A VPN will encrypt all of the traffic travelling through the tunnel itself meaning that we are no longer handing WEP a plaintext message but instead ciphertext from our VPN implementation of choice.
 This means that if (or when) the WEP security is broken, the data will still be unreadable by an attacker.
 .SH 2
-Wireguard VPN
+SoftEther VPN
 .PP
-Wireguard is a recent VPN implementation written by Jason A. Donenfeld, known for password store and cgit, and is on track for merging into the linux kernel tree.
-WG is a Layer 3 implementation licenced with GPL and written in C with only ~4000 lines of code it is perfectly suited for low powered devices that would struggle with a more heavy OpenVPN or Swansong implementation.
+SoftEther is a long standing open source VPN implementation written in C and C++ available for all of the major platforms.
+SE's own VPN language is a Layer 3 implementation licenced with Apache and written in C making it suited for the range of devices that would benefit from the VPN.
 
+
+
+Intrusion Detection System
+.PP
 
 .NH
 Ethical
