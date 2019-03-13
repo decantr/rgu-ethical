@@ -132,20 +132,60 @@ This even further reduced the time taken in the average aggressive attack to les
 Further, the use of the static PSK for encrypting the traffic means that an attacker can capture a large amount of traffic quickly and then disconnect from the network and break the encryption offline.
 This is less of an issue as the previous one as the time taken to break WEP is so small.
 .NH
-Countermeasures
+Proposal
 .PP
-A number of countermeasures can be used to combat the impotence of WEP.
-The primary tool we are going to use for this is a VPN.
+To improve the security of the highly vulnerable WEP section of the Greenshoots Ltd. a number of options exsist.
+The primary tool we are going to use for this is a VPN, which will create another layer of security on the network.
 A VPN will encrypt all of the traffic travelling through the tunnel itself meaning that we are no longer handing WEP a plaintext message but instead ciphertext from our VPN implementation of choice.
 This means that if (or when) the WEP security is broken, the data will still be unreadable by an attacker.
+\# VPN DIAGRAM
 .SH 2
 SoftEther VPN
 .PP
 SoftEther is a long standing open source VPN implementation written in C and C++ available for all of the major platforms.
 SE's own VPN language is a Layer 3 implementation licenced with Apache and written in C making it suited for the range of devices that would benefit from the VPN.
+It also has the ability to deploy a number of other VPN implementations from OpenVPN to IPsec, however for our demonstration setup the native implemnentation will be sufficient.
+By default SoftEther authenticates clients to a self generated certificate and individual key which an administrator must provide to each client connecting.
+For a production enviroment, a more lightweight implementation such as IPsec or WireGuard may be more prefereable if the throughput on the network is required to be unhampered.
+.SH 3
+Implementation
+.PP
+The SoftEther package comes in two binary's, an installable server and client.
+For our demonstration two VM's will be used to act as two nodes on our network, both running Windows 7 SP 1 named Blue and Green respectively, with a Kali Linux VM acting as a hostile unauthenticated attacker, listening to our traffic.
+Kali will have a running Wireshark instance listening on the NIC attached to the network with other VM's and we will be monitoring the traffic as weping between our two machines before and after the VPN setup.
+Our network will be setup such that all three machines are in the same subnet, although in the wild the Kali Linux machine would not need to join the network merely have a Wireless NIC in promiscuous mode.
+Our Windows Server, Blue, will be
+.CW "10.0.0.1" ,
+our Windows Client, Green, will be
+.CW "10.0.0.2" ,
+while Kali will be
+.CW "10.0.0.3" .
+.TS
+center tab(:);
+c s s
+l | c | c
+l | c | n.
+IP Addresses
 
-
-
+Virtual Machine:Role:IP address
+_
+Windows 7 Blue:Server:10.0.0.1
+_
+Windows 7 Green:Client:10.0.0.2
+_
+Kali Linux:Attacker:10.0.0.3
+.TE
+.PP
+Initially we will send a ping from our Blue Server to our Green Client with
+.CW "ping 10.0.0.2"
+and obserce in Kali linux that we see a cleartext ICMP packet being sent and its associated reply.
+\# ethical-k-unencrypted.png
+Now we know that all VM's are connected and working and we have data being transmitted in clear we can begin the VPN setup.
+.SH 3
+Installation of SoftEther
+.PP
+During the installation it is important to choose the avaiable
+.SH 2
 Intrusion Detection System
 .PP
 
