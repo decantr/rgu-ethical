@@ -337,4 +337,59 @@ Intrusion Detection System
 .PP
 
 .NH
-Ethical
+The Ethics of Whitehat Hacking
+.PP
+To combat the any concerns to the legitimacy of the ethics and profession of hacking this section will detail the reasons for it.
+Below will detail the ethical framework and professional standards that ethical hackers operate within.
+.SH 2
+Certifications
+.PP
+Certifications exist for professionals working in the field to show that they both meet a certain standard of competancy and that they atleast understand an ethical code of conduct.
+These certifications prove that penetration testers can legally and professionally identify and report security flaws without breaching legislation, such as the Computer Misuse Act 1998.
+A number of bodies exist which offer these, listed as follows.
+.RS
+.IP \[bu]
+Certified Ethical Hacker
+.B "CEH" ) (
+.IP \[bu]
+Offensive Security Certified Professional
+.B "OSCP" ) (
+.IP \[bu]
+Global Information Assuracnce Certification Penetration Tester
+.B "GPEN" ) (
+.RE
+.SH 3
+Certified Ethical Hacker
+.PP
+The CEH certification is issued by "EC-Council"
+and is describes the holder who is a "Skilled professional who understands how to look for weeknesses and vulnerabilities" and who reports them in a "lawful and legitimate manner".
+The certification lasts for 4 years before needing to be renewed.
+By training certificate holders with the same tools as a malicous hacker the aim is to have them be better informed than other methods as to how an attacker would approach attacking a system so as to better be able to prevent an attack.
+Further the certificate helps to combat any misconception of ethical hacking by "establishing minimum stanadards" and "reinfocing ethical hacking as a ... slef-regulating profession".
+.[
+Certified Ethical
+.]
+
+.SH 3
+Offensive Security Cerified Professional
+.PP
+OSCP is the least known of the three listed here but is possibly the most technically demanding of the three.
+It aims to provide less of the ethical framework and instead focuses more on the "employability" aspect of ethical hacking.
+This is due to it being provided by a private company "Offensive Security" whom advertise it as "the only fully hands-on certification program".
+.[
+Offensive Security
+.]
+.SH 3
+GIAC Penetration Tester
+.PP
+The GPEN certification is designed for industry profressionals who work in threat asssesment and lasts for four years, much like the CEH.
+It includes objectives to teach
+.I
+"penetration-testing methodologies, the legal issues surrounding penetration testing and how to properly conduct a penetration test"
+.R
+The Most common way to obtain this certification is by taking the the
+.B "SEC560"
+which is a comprehensive course that demonstrates that the holder understandes the theory and has the practical knowledge to implement it.
+.[
+GIAC
+.]
