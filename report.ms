@@ -199,10 +199,42 @@ However while this is far outside the remit of our demonstration, it will provid
 .QP
 .RS
 .I
-In a production enviroment this VPN would not be on the edge of a network (unless it was providing the entire company VPN) and thus would not be exposed itself.
+In a production environment this VPN would not be on the edge of a network (unless it was providing the entire company VPN) and thus would not be exposed itself.
 .RE
 .R
+\# ethical-s-vpnsettings.png
 .PP
+Once we have selected the appropriate type of VPN for our implementation, we must configure the server.
+As we said earlier our Windows Blue Server will be
+.CW "10.0.0.1"
+so we will set the hostname accordingly.
+For the Port, we do not need to worry about changing this as this will be the only server running on this VM.
+If we wanted to have multiple instances or had a firewall with only a specific port opened then we would need to change this.
+Finally our adminstrator password is up to the discretion of the network administrator setting this up, however it would be good practice to ensure this was a strong password.
+\# ethical-s-createcert.png
+.PP
+Next we we need to create the certificate for our server which users can use to ensure that our server is who it says it is.
+In production we would likely see this certificate entered into a Certificate Authority
+.B "CA" ) (
+which is a central,
+.B "trusted" ,
+authority which users can request the certificate from to check against the server it's connecting to.
+However again, for demonstration purposes this is unnesecary and we will just issue a Self-Signed Certificate and distribute this to the clients manually.
+.TS
+center tab(:);
+c s
+l | c.
+Certificate Details
+Common Name(CN):User001
+Organization (O):Greenshoots Ltd.
+Organization Unit (OU):IT
+Country (C):UK
+State (ST):Scotland
+Locale (L):Aberdeen
+Seriel Number (Hex): N/A
+Expires:3650 Days
+.TE
+
 
 
 .SH 2
