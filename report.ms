@@ -328,7 +328,7 @@ with the
 set from our Client to our Server, which will generate some traffic for us.
 \# ethical-k-encrypted.png
 .PP
-Looking at the the data collected by wireshark of a typical movement of data between the client and the server.
+Looking at the the output collected by wireshark of a typical movement of data between the client and the server.
 We can see that the data is being sent as a UDP stream, a typical way for VPN's to move encrypted packets.
 Using Wireshark's "follow UDP Stream" tool we can see the entire contents of all the packets and as we can see it is encrypted.
 
@@ -341,6 +341,40 @@ The Ethics of Whitehat Hacking
 .PP
 To combat the any concerns to the legitimacy of the ethics and profession of hacking this section will detail the reasons for it.
 Below will detail the ethical framework and professional standards that ethical hackers operate within.
+.SH 2
+The Ethical Hacking Framework
+.PP
+The proccess of attempting to hack something is not without structure.
+In both whitehat and blackhat hacking there is a process that attackers follow to ensure that their work is thorough and repeatable.
+This is especially true for whitehat hackers where they need to be able to show the proccess taken to uncover the flaw.
+.PP
+If a company requests an attack to be made (for threat discovery in a controlled way) then they may designate "Off limits" devices or servers that an ethical hacker should not touch for various reasons.
+This is an example of the process that whitehat hacking companies or individuals undergo to ensure that the ethics of the field are maintained.
+.SH 2
+Code Of Conduct
+.PP
+A code of conduct is commonplace in many institutions and groups across the world and across most fields.
+It is a pre agreed set of rules that say what you cannot do and if you are in breach of these rules you will recieve some kind of punishment.
+This is no different in the ethical hacking field.
+The Association for Computing Machinery
+.B "ACM" ) (
+is one of the widely cited code of conducts and lists a number of common sense rules for conducting business in the field of penetration testing.
+.[
+ACM Code
+.]
+The EC-Council list 19 rules that range from
+.I
+"no private information should be gained [during a pen test]"
+.R
+to
+.I
+"Ensure all ... testing activites are authorized and within legal limits".
+.R
+These are sensible rules that any ethical person would agree on.
+.[
+EC-Council Code of Ethics
+.]
+The rules also advise proffesionals on the extent of the limits to where they should be attempting to gain access, unless otherwise specified by the target, and helps to ensure they can do their job.
 .SH 2
 Certifications
 .PP
@@ -369,7 +403,6 @@ Further the certificate helps to combat any misconception of ethical hacking by 
 .[
 Certified Ethical
 .]
-
 .SH 3
 Offensive Security Cerified Professional
 .PP
@@ -393,3 +426,4 @@ which is a comprehensive course that demonstrates that the holder understandes t
 .[
 GIAC
 .]
+
