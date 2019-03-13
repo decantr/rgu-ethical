@@ -426,4 +426,31 @@ which is a comprehensive course that demonstrates that the holder understandes t
 .[
 GIAC
 .]
-
+.SH 2
+Computer Misuse Act 1990
+.PP
+There are a number of laws surrounding the illegal use of computers and access of networks but none so prolific as the Computer Misuse Act of 1990
+.B "CMA90" ). (
+The law clarified the law on the unauthorized access to a system or network and allowed the prosecution of people gaining access.
+It has becoming a model for a number of other countries and has been described
+.I
+"as a robust and flexible piece of legislation in terms of dealing with cybercrime".
+.[
+quoteoncma
+.]
+.R
+The act is designed to protect computer users from wilful attacks and theft of Personal Information.
+The offenses it covers are as follows;
+.RS
+.IP \[bu]
+Hacking
+.IP \[bu]
+Unauthorized Access to Computer Systems
+.IP \[bu]
+Altering Software and Data
+.IP \[bu]
+Preventing Access of Legitimate Users
+.IP \[bu]
+Interfering with standard Opeteration
+.RE
+This piece of legislation is a solid document that ethical hackers can use as a point of reference to both the legality of what they can do and how far their penetration tesing can go.
