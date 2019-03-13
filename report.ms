@@ -243,12 +243,81 @@ With this proccess hooked up to an Lightweight Directory Access Protocol
 or Active Directory
 .B "AD" ) (
 server, the certificates could be tied to those user profiles and would be generated and expired as the LDAP/AD accounts were.
+When exporting we have a choice of options, the standard X509 will provide us with two files a
+.CW ".cer"
+and a
+.CW ".key"
+which will both be needed by the user when connecting to the server.
 \# ethical-s-vpnsetup
 .PP
 Once we have completed this our VPN can be started and we will be looking at the an information screen with various options and information regarding users connected.
 From here we will need to move to the client and connect them to the server.
+.QP
+.RS
+.I
+It is important to remember to move the
+.CW ".cer"
+and
+.CW ".key"
+files over to the client as they will be required.
+.RE
+.R
 .SH 3
 Client Setup
+\# ethical-c-configuration.png
+.PP
+Our client setup is far more simple than our server setup.
+The hostname will need to be set to that of the server running the SoftEther VPN server instance, in our case the Windows 7 Blue VM at
+.CW "10.0.0.1"
+or to a hostname
+.CW "vpn.greenshoots.local"
+if one has been set and the port, unless changed on the server configuration, will need to be set to
+.CW "5555" .
+.QP
+.RS
+.I
+If a hostname is chosen it is important that the DHCP server providing the clients can also provide the domain name resolution of internal hostnames otherwise this will not work.
+.RE
+.R
+.TS
+centre tab(:);
+c s
+c | c.
+Client Configuration
+Hostname:10.0.0.1
+Port:5555
+.TE
+Next the
+.CW ".cer"
+and
+.CW ".key"
+moved over from the server must be chosen and if a passphrase was entered on the server when exporting the certificate it must be entered here to decrypt the key.
+For a production enviroment a certificate for the server itself should be made and registered for the VPN to protect against a Man In The Middle
+.B "MITM" ) (
+attack.
+\# ethical-c-connected.png
+.PP
+Looking at the Client we can now see that we are connected to the server.
+.SH 3
+Test the VPN
+.PP
+To test if the VPN is configured successfully we will now finally switch to the Kali Linux VM.
+As we saw in figure X the unencrypted ICMP ping packet can be easily read by Wireshark, although it contains no real useful information it serves to demonstrate that it
+.B "can"
+be read.
+One slight flaw in SoftEther is that it doesn't encrypt ICMP packets by default.
+This is not a deal breaker as our data will still be encrypted, as ICMP is mainly for diagnostics and error reporting information.
+We must now setup Wireshark to listen to the traffic on the network, we can either wait for a handshake, a keepalive transmission or generate some data between the two machines ourselves.
+For example a "TCP ping" by using
+.CW "traceroute"
+with the
+.CW "-P tcp"
+set from our Client to our Server, which will generate some traffic for us.
+\# ethical-k-encrypted.png
+.PP
+Looking at the the data collected by wireshark of a typical movement of data between the client and the server.
+We can see that the data is being sent as a UDP stream, a typical way for VPN's to move encrypted packets.
+Using Wireshark's "follow UDP Stream" tool we can see the entire contents of all the packets and as we can see it is encrypted.
 
 .SH 2
 Intrusion Detection System
