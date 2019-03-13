@@ -77,17 +77,24 @@ One minor flaw that exists with this lies in the first 256 bytes of the resultin
 This is
 .B "not"
 the case in WEP and thus the initial output of the stream is susceptible.
-\#.[ Andrew Roos .]
+.[
+Andrew Roos
+.]
 .PP
 A second flaw that reveals that the relationship between the first 8 bytes of the key, if chosen correctly, can inform on the remaining half of the key.
 This flaw is not an issue in the SSL implementation of RC4 as SSL uses MD5 to hash the key before it used.
-\#.[ David Wagner .]
+.[
+David Wagner
+.]
 .SH 2
 WEP Issues
 .PP
 These issues in RC4 can be avoided as described, discarding the initial ~256 byte output and hashing the key before using it however WEP implements neither of these.
 In fact WEP's implementation makes the situation worse by regenerating the keystream, with a fresh IV, for each packet, meaning that it is very easy to capture a wide variety of IV's.
 Further the 802.11 protocol has a number of static plaintext elements that it embeds into the packet header.
+.[
+Chris Grier
+.]
 These known bytes allow the attacker to make informed assumptions about the ciphertext packets being examined.
 .PP
 In 2001 it was discovered in the Fluhrer, Mantin & Shamir
@@ -95,7 +102,9 @@ In 2001 it was discovered in the Fluhrer, Mantin & Shamir
 attack that certain IV's had a predictable resulting output.
 Since the IV used is known, as it is transmitted in plaintext with the ciphertext, a wide range of IV's can be quickly obtained.
 An attacker can then use a voting system to guess at the a next byte of the key, repeatedly, until the entire secret key has been revealed.
-\#.[ Weakness in Key Scheduling Algorithm .]
+.[
+Weakness in Key Scheduling Algorithm
+.]
 .QP
 .RS
 .I
@@ -112,7 +121,9 @@ or 16,777,216 significantly increasing the likelihood of key repetition to %50 a
 Further, with an aggressive method of replaying Address Resolution Protocol
 .B "ARP" ) (
 requests a sufficient number of packets to retrieve the secret key can be obtained in under a minute.
-\#.[ breaking 104 bit WEP ].
+.[
+Erik Tews
+.]
 .SH 2
 General WEP Issues
 .PP
@@ -127,7 +138,9 @@ and a consistent network connection would be able to capture the full range of p
 This was discovered to be unnecessary in as an attack success rate of 50% can be achieved after capturing only 40,000 packets (increasing to 95% at 85,000 packets).
 The 802.11g standard introduced the 54 MBit/s (22 Mbit average maximum throughput) specification, a major step up in bandwidth and reducing the time to retrieve all possible IV's within an hour.
 This even further reduced the time taken in the average aggressive attack to less than a minute.
-\#.[ Breaking WEP in less than 60 seconds .]
+.[
+Breaking WEP in less than 60 seconds
+.]
 .PP
 Further, the use of the static PSK for encrypting the traffic means that an attacker can capture a large amount of traffic quickly and then disconnect from the network and break the encryption offline.
 This is less of an issue as the previous one as the time taken to break WEP is so small.
