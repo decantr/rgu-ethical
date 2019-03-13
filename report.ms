@@ -136,7 +136,9 @@ Proposal
 .PP
 To improve the security of the highly vulnerable WEP section of the Greenshoots Ltd. a number of options exsist.
 The primary tool we are going to use for this is a VPN, which will create another layer of security on the network.
+It does this by constructing a "tunnel" in which the "private network" exists, this can be done over any network from a LAN to the public internet.
 A VPN will encrypt all of the traffic travelling through the tunnel itself meaning that we are no longer handing WEP a plaintext message but instead ciphertext from our VPN implementation of choice.
+The network is only accessible once a user has passed an authentication check in the form of either a Username and Password or in the form of
 This means that if (or when) the WEP security is broken, the data will still be unreadable by an attacker.
 \# VPN DIAGRAM
 .SH 2
@@ -183,8 +185,26 @@ and obserce in Kali linux that we see a cleartext ICMP packet being sent and its
 Now we know that all VM's are connected and working and we have data being transmitted in clear we can begin the VPN setup.
 .SH 3
 Installation of SoftEther
+\# ethical-s-choice.png
 .PP
-During the installation it is important to choose the avaiable
+During the installation it is important to choose the avaiable "SoftEther VPN Server" and "SoftEther VPN Client" options during the server and client installation respectively.
+\# ethical-s-remoteaccess.png
+.PP
+SoftEther allows a number of configurations on the VPN Server.
+In our demonstration the
+.B "Remote Access VPN Server" " "
+will be used as it provides far more functionality than we require, creating a bridge between remote locations and our local network.
+This is intended to allow authenticated remote users to access local resources such as files available on a local intranet, for example.
+However while this is far outside the remit of our demonstration, it will provide the basic functionality we require.
+.QP
+.RS
+.I
+In a production enviroment this VPN would not be on the edge of a network (unless it was providing the entire company VPN) and thus would not be exposed itself.
+.RE
+.R
+.PP
+
+
 .SH 2
 Intrusion Detection System
 .PP
