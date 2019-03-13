@@ -34,6 +34,14 @@ Wired Equivalent Privacy
 \# TODO : Mention WPA's stalting of key with SSID
 \# TODO : WEP Authentication
 \# TODO : Issues with CRC-32
+\# ethical-wep-diagram.svg
+.RS
+.RS
+.I
+By Traced by User:Stannered, original by en:User:Mhandley - en:Image:Wep-crypt.png, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1893247
+.R
+.RE
+.RE
 .PP
 The WEP algorithm was introduced with the IEEE 802.11 wireless standard in 1997 which was an extension to the 802 Local Area Network
 .B "LAN" ) (
@@ -52,7 +60,6 @@ This restriction allowed for either 5 or 13 ASCII character passwords respective
 WEP was pervasive until major security flaws were discovered and the 802.11i revision was issued which introduced Wi-Fi Protected Access
 .B "WPA" ). (
 However a number of issues became clear with the WEP algorithm during its lifespan.
-\#.SH 2 "Issues"
 .SH 3
 Rivest Cipher 4 (RC4)
 .PP
@@ -149,6 +156,8 @@ Proposal
 .PP
 To improve the security of the highly vulnerable WEP section of the Greenshoots Ltd. a number of options exsist.
 The primary tool we are going to use for this is a VPN, which will create another layer of security on the network.
+\# ethical-vpn-diagram.png
+In it's simplest form a VPN is just a connection between two nodes, these can be phones, computers, servers etc.
 It does this by constructing a "tunnel" in which the "private network" exists, this can be done over any network from a LAN to the public internet.
 A VPN will encrypt all of the traffic travelling through the tunnel itself meaning that we are no longer handing WEP a plaintext message but instead ciphertext from our VPN implementation of choice.
 The network is only accessible once a user has passed an authentication check in the form of either a Username and Password or in the form of
