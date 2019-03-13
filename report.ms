@@ -333,9 +333,38 @@ We can see that the data is being sent as a UDP stream, a typical way for VPN's 
 Using Wireshark's "follow UDP Stream" tool we can see the entire contents of all the packets and as we can see it is encrypted.
 
 .SH 2
+Other methods
+.QP
 Intrusion Detection System
 .PP
-
+An intrustion detection system would ensure that a system administration could monitor all access to the network.
+If a device or user connected that was not recognised an issue would be flagged.
+This would then either require manual checking or some kind of of automated blocking of that user.
+An implementation of this is Snort
+.CW "snort.org"
+which is an
+.I
+"open source intrusion prevention system capable of real-time traffic analysis and packet logging".
+.[
+What is Snort
+.]
+.R
+This would be simple to implement on the network as binaries are available for Windows and Linux.
+However as we already have the VPN tunnel setup our data is secure and this type of system would only help us know if someone was attempting to access our network.
+.QP
+Firewall
+.PP
+A firewall is an extremely simple way of blocking traffic.
+It operates through ports, "opening" them if a rule is set to allow this, much like removing a brick from a wall and allowing things to pass through the hole.
+This is extremely important on machines exposed to the internet to ensure that no unintended service is opened to the public.
+The two primary implementations for a network of our size would be Windows Firewall, for a windows server, and uncomplicated firewall,
+.CW "ufw" ,
+for a linux machine.
+Windows provides a GUI for adding and deleting rules based on programs registering themselves to a port and allowing the administrator to allow or deny it.
+Linux's ufw on the other hand is a very lightweight tool where rules are added manually with
+.CW "ufw allow 5555"
+where "5555" would be the port number.
+However again, although very useful for the purposes required here "protecting network access" we do not require it.
 .NH
 The Ethics of Whitehat Hacking
 .PP
