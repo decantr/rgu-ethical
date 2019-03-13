@@ -1,0 +1,53 @@
+%K bobjenkins1994
+%A Bob Jenkins
+%T RC4 Flaws In Algorithm
+%D 1994
+%O https://groups.google.com/forum/#!msg/sci.crypt/JsO3xEATGFA/-wO4ttv7BCYJ
+
+%K fluhrermantinshamir2003
+%A Scott Fluhrer
+%A Itsik Mantin
+%A Adi Shamir
+%T Weakness in the Key Scheduling Algorithm of RC4
+%D 2003
+%O https://www.mattblaze.org/papers/others/rc4_ksaproc.pdf
+
+%K andrewroos1995
+%A Andrew Roos
+%T A Class of Weak Keys in the RC4 Stream Cipher
+%D 1995
+%O https://pdfs.semanticscholar.org/788c/9474b2f74ff56253cdf799e71a3ef4d5f77c.pdf
+
+%K davidwagner1995
+%A David Wagner
+%T Predictability of RC4 Keystream
+%D 1995
+%O http://www.cs.berkeley.edu/~daw/my-posts/my-rc4-weak-keys
+
+%K historyofrc4
+%A Chris Grier
+%A Mike Perry
+%A Andy Washington
+%T The History and Background of RC4
+%O https://fscked.org/proj/minihax/WirelessSec/rc4.html
+
+%K wirelessec
+%A Chris Grier
+%A Mike Perry
+%A Andy Washington
+%T Wireless Security
+%O https://fscked.org/proj/minihax/WirelessSec/
+
+%K aircrackhowmanyivtocrack
+%A aircrack-ng.org
+%T How many IVs are required to crack WEP
+%O https://www.aircrack-ng.org/doku.php?id=faq
+
+%K tewsweinmannpyshkin2007
+%A Erik Tews
+%A Ralf-Philipp Weinmann
+%A Andrei Pyshkin
+%T Breaking 104 Bit WEP in Less Than 60 Seconds
+%D 2007
+%O http://merlot.usc.edu/cs531-s15/papers/Tews07a.pdf
+
