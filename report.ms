@@ -34,12 +34,15 @@ Wired Equivalent Privacy
 \# TODO : Mention WPA's stalting of key with SSID
 \# TODO : WEP Authentication
 \# TODO : Issues with CRC-32
-\# ethical-wep-diagram.svg
+.RS
+.RS
 .RS
 .RS
 .I
-By Traced by User:Stannered, original by en:User:Mhandley - en:Image:Wep-crypt.png, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1893247
+Figure 1
 .R
+.RE
+.RE
 .RE
 .RE
 .PP
@@ -156,13 +159,22 @@ Proposal
 .PP
 To improve the security of the highly vulnerable WEP section of the Greenshoots Ltd. a number of options exsist.
 The primary tool we are going to use for this is a VPN, which will create another layer of security on the network.
-\# ethical-vpn-diagram.png
+.RS
+.RS
+.RS
+.RS
+.I
+Figure 2
+.R
+.RE
+.RE
+.RE
+.RE
 In it's simplest form a VPN is just a connection between two nodes, these can be phones, computers, servers etc.
 It does this by constructing a "tunnel" in which the "private network" exists, this can be done over any network from a LAN to the public internet.
 A VPN will encrypt all of the traffic travelling through the tunnel itself meaning that we are no longer handing WEP a plaintext message but instead ciphertext from our VPN implementation of choice.
 The network is only accessible once a user has passed an authentication check in the form of either a Username and Password or in the form of
 This means that if (or when) the WEP security is broken, the data will still be unreadable by an attacker.
-\# VPN DIAGRAM
 .SH 2
 SoftEther VPN
 .PP
@@ -203,16 +215,46 @@ Kali Linux:Attacker:10.0.0.3
 Initially we will send a ping from our Blue Server to our Green Client with
 .CW "ping 10.0.0.2"
 and obserce in Kali linux that we see a cleartext ICMP packet being sent and its associated reply.
-\# ethical-k-unencrypted.png
+.RS
+.RS
+.RS
+.RS
+.I
+Figure 3
+.R
+.RE
+.RE
+.RE
+.RE
 Now we know that all VM's are connected and working and we have data being transmitted in clear we can begin the VPN setup.
 .SH 3
 Installation of SoftEther
-\# ethical-s-choice.png
+.RS
+.RS
+.RS
+.RS
+.I
+Figure 4
+.R
+.RE
+.RE
+.RE
+.RE
 .PP
 During the installation it is important to choose the avaiable "SoftEther VPN Server" and "SoftEther VPN Client" options during the server and client installation respectively.
 .SH 3
 Server Setup
-\# ethical-s-remoteaccess.png
+.RS
+.RS
+.RS
+.RS
+.I
+Figure 5
+.R
+.RE
+.RE
+.RE
+.RE
 .PP
 SoftEther allows a number of configurations on the VPN Server.
 In our demonstration the
@@ -226,7 +268,17 @@ However while this is far outside the remit of our demonstration, it will provid
 In a production environment this VPN would not be on the edge of a network (unless it was providing the entire company VPN) and thus would not be exposed itself.
 .RE
 .R
-\# ethical-s-vpnsettings.png
+.RS
+.RS
+.RS
+.RS
+.I
+Figure 6
+.R
+.RE
+.RE
+.RE
+.RE
 .PP
 Once we have selected the appropriate type of VPN for our implementation, we must configure the server.
 As we said earlier our Windows Blue Server will be
@@ -235,7 +287,17 @@ so we will set the hostname accordingly.
 For the Port, we do not need to worry about changing this as this will be the only server running on this VM.
 If we wanted to have multiple instances or had a firewall with only a specific port opened then we would need to change this.
 Finally our adminstrator password is up to the discretion of the network administrator setting this up, however it would be good practice to ensure this was a strong password.
-\# ethical-s-createcert.png
+.RS
+.RS
+.RS
+.RS
+.I
+Figure 7
+.R
+.RE
+.RE
+.RE
+.RE
 .PP
 Next we we need to create the certificate for our client which our server can use to ensure that our client is who they say they are.
 In production we would likely see this certificate entered into a Certificate Authority
@@ -270,7 +332,17 @@ When exporting we have a choice of options, the standard X509 will provide us wi
 and a
 .CW ".key"
 which will both be needed by the user when connecting to the server.
-\# ethical-s-vpnsetup
+.RS
+.RS
+.RS
+.RS
+.I
+Figure 8
+.R
+.RE
+.RE
+.RE
+.RE
 .PP
 Once we have completed this our VPN can be started and we will be looking at the an information screen with various options and information regarding users connected.
 From here we will need to move to the client and connect them to the server.
@@ -286,7 +358,17 @@ files over to the client as they will be required.
 .R
 .SH 3
 Client Setup
-\# ethical-c-configuration.png
+.RS
+.RS
+.RS
+.RS
+.I
+Figure 9
+.R
+.RE
+.RE
+.RE
+.RE
 .PP
 Our client setup is far more simple than our server setup.
 The hostname will need to be set to that of the server running the SoftEther VPN server instance, in our case the Windows 7 Blue VM at
@@ -317,7 +399,17 @@ moved over from the server must be chosen and if a passphrase was entered on the
 For a production enviroment a certificate for the server itself should be made and registered for the VPN to protect against a Man In The Middle
 .B "MITM" ) (
 attack.
-\# ethical-c-connected.png
+.RS
+.RS
+.RS
+.RS
+.I
+Figure 10
+.R
+.RE
+.RE
+.RE
+.RE
 .PP
 Looking at the Client we can now see that we are connected to the server.
 .SH 3
@@ -335,9 +427,19 @@ For example a "TCP ping" by using
 with the
 .CW "-P tcp"
 set from our Client to our Server, which will generate some traffic for us.
-\# ethical-k-encrypted.png
+.RS
+.RS
+.RS
+.RS
+.I
+Figure 11
+.R
+.RE
+.RE
+.RE
+.RE
 .PP
-Looking at the the output collected by wireshark of a typical movement of data between the client and the server.
+Looking at the output collected by wireshark of a typical movement of data between the client and the server.
 We can see that the data is being sent as a UDP stream, a typical way for VPN's to move encrypted packets.
 Using Wireshark's "follow UDP Stream" tool we can see the entire contents of all the packets and as we can see it is encrypted.
 
@@ -346,7 +448,7 @@ Other methods
 .QP
 Intrusion Detection System
 .PP
-An intrustion detection system would ensure that a system administration could monitor all access to the network.
+An intrusion detection system would ensure that a system administration could monitor all access to the network.
 If a device or user connected that was not recognised an issue would be flagged.
 This would then either require manual checking or some kind of of automated blocking of that user.
 An implementation of this is Snort
@@ -382,9 +484,9 @@ Below will detail the ethical framework and professional standards that ethical 
 .SH 2
 The Ethical Hacking Framework
 .PP
-The proccess of attempting to hack something is not without structure.
+The process of attempting to hack something is not without structure.
 In both whitehat and blackhat hacking there is a process that attackers follow to ensure that their work is thorough and repeatable.
-This is especially true for whitehat hackers where they need to be able to show the proccess taken to uncover the flaw.
+This is especially true for whitehat hackers where they need to be able to show the process taken to uncover the flaw.
 .PP
 If a company requests an attack to be made (for threat discovery in a controlled way) then they may designate "Off limits" devices or servers that an ethical hacker should not touch for various reasons.
 This is an example of the process that whitehat hacking companies or individuals undergo to ensure that the ethics of the field are maintained.
@@ -392,7 +494,7 @@ This is an example of the process that whitehat hacking companies or individuals
 Code Of Conduct
 .PP
 A code of conduct is commonplace in many institutions and groups across the world and across most fields.
-It is a pre agreed set of rules that say what you cannot do and if you are in breach of these rules you will recieve some kind of punishment.
+It is a pre agreed set of rules that say what you cannot do and if you are in breach of these rules you will receive some kind of punishment.
 This is no different in the ethical hacking field.
 The Association for Computing Machinery
 .B "ACM" ) (
@@ -406,17 +508,17 @@ The EC-Council list 19 rules that range from
 .R
 to
 .I
-"Ensure all ... testing activites are authorized and within legal limits".
+"Ensure all ... testing activities are authorized and within legal limits".
 .R
 These are sensible rules that any ethical person would agree on.
 .[
 EC-Council Code of Ethics
 .]
-The rules also advise proffesionals on the extent of the limits to where they should be attempting to gain access, unless otherwise specified by the target, and helps to ensure they can do their job.
+The rules also advise professionals on the extent of the limits to where they should be attempting to gain access, unless otherwise specified by the target, and helps to ensure they can do their job.
 .SH 2
 Certifications
 .PP
-Certifications exist for professionals working in the field to show that they both meet a certain standard of competancy and that they atleast understand an ethical code of conduct.
+Certifications exist for professionals working in the field to show that they both meet a certain standard of competency and that they at least understand an ethical code of conduct.
 These certifications prove that penetration testers can legally and professionally identify and report security flaws without breaching legislation, such as the Computer Misuse Act 1998.
 A number of bodies exist which offer these, listed as follows.
 .RS
@@ -427,22 +529,22 @@ Certified Ethical Hacker
 Offensive Security Certified Professional
 .B "OSCP" ) (
 .IP \[bu]
-Global Information Assuracnce Certification Penetration Tester
+Global Information Assurance Certification Penetration Tester
 .B "GPEN" ) (
 .RE
 .SH 3
 Certified Ethical Hacker
 .PP
 The CEH certification is issued by "EC-Council"
-and is describes the holder who is a "Skilled professional who understands how to look for weeknesses and vulnerabilities" and who reports them in a "lawful and legitimate manner".
+and is describes the holder who is a "Skilled professional who understands how to look for weaknesses and vulnerabilities" and who reports them in a "lawful and legitimate manner".
 The certification lasts for 4 years before needing to be renewed.
-By training certificate holders with the same tools as a malicous hacker the aim is to have them be better informed than other methods as to how an attacker would approach attacking a system so as to better be able to prevent an attack.
-Further the certificate helps to combat any misconception of ethical hacking by "establishing minimum stanadards" and "reinfocing ethical hacking as a ... slef-regulating profession".
+By training certificate holders with the same tools as a malicious hacker the aim is to have them be better informed than other methods as to how an attacker would approach attacking a system so as to better be able to prevent an attack.
+Further the certificate helps to combat any misconception of ethical hacking by "establishing minimum standards" and "reinforcing ethical hacking as a ... slef-regulating profession".
 .[
 Certified Ethical
 .]
 .SH 3
-Offensive Security Cerified Professional
+Offensive Security Certified Professional
 .PP
 OSCP is the least known of the three listed here but is possibly the most technically demanding of the three.
 It aims to provide less of the ethical framework and instead focuses more on the "employability" aspect of ethical hacking.
@@ -453,14 +555,14 @@ Offensive Security
 .SH 3
 GIAC Penetration Tester
 .PP
-The GPEN certification is designed for industry profressionals who work in threat asssesment and lasts for four years, much like the CEH.
+The GPEN certification is designed for industry professionals who work in threat assessment and lasts for four years, much like the CEH.
 It includes objectives to teach
 .I
 "penetration-testing methodologies, the legal issues surrounding penetration testing and how to properly conduct a penetration test"
 .R
-The Most common way to obtain this certification is by taking the the
+The Most common way to obtain this certification is by taking the
 .B "SEC560"
-which is a comprehensive course that demonstrates that the holder understandes the theory and has the practical knowledge to implement it.
+which is a comprehensive course that demonstrates that the holder understands the theory and has the practical knowledge to implement it.
 .[
 GIAC
 .]
@@ -489,6 +591,6 @@ Altering Software and Data
 .IP \[bu]
 Preventing Access of Legitimate Users
 .IP \[bu]
-Interfering with standard Opeteration
+Interfering with standard Operation
 .RE
 This piece of legislation is a solid document that ethical hackers can use as a point of reference to both the legality of what they can do and how far their penetration tesing can go.
